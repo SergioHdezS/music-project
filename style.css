@@ -42,8 +42,6 @@ section {
     color: #000000;
     font-size: 1.3em;
     border: none;
-    box-shadow: 0px 0px 20px 30px rgba(8, 255, 74, 1);
-    animation: CambioBoxshadow 2s infinite;
     position: relative;
     font-weight: bolder;
     cursor: pointer;
@@ -52,21 +50,6 @@ section {
 .btn__InicioSeccion:hover{
     scale: 1.02;
 }
-
-@keyframes CambioBoxshadow {
-    0%{
-        box-shadow: 0px 0px 15px 1px rgba(8, 255, 74, 1);
-    }
-
-    50%{
-        box-shadow: 0px 0px 35px 1px rgba(8, 255, 74, 1);
-    }
-
-    100%{
-        box-shadow: 0px 0px 15px 1px rgba(8, 255, 74, 1);
-    }
-}
-
 
 /* ------ CARD STYLES ------ */
 
