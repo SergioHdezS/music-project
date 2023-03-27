@@ -1,15 +1,22 @@
-* {
+body {
     background-color: #141010;
     color: #F5F5FA;
     font-family: sans-serif;
+    margin: 25px 150px 0px 150px;
 }
 
 h1 {
-    font-family: 'Arial';
     font-style: normal;
     font-weight: 700;
     font-size: 64px;
-    line-height: 74px;
+}
+
+p {
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 32px;
 }
 
 header {
@@ -22,14 +29,39 @@ section {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-auto-flow: dense;
-    margin-left: 150px;
-    margin-right: 150px;
     grid-gap: 50px;
 }
+
+/* ------ CARD STYLES ------ */
 
 .card {
     background-color: #323232;
     width: 250px;
     height: 300px;
     border-radius: 15px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.album-image {
+    width: 180px;
+    height: 183px;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+.song-info {
+    justify-content: center;
+    text-align: center;
+}
+
+.song-name {
+    font-size: 24px;
+    height: 8px;
+}
+
+.song-artist {
+    font-size: 20px;
+    height: 5px;
 }
