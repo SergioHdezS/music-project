@@ -32,6 +32,25 @@ section {
     grid-gap: 50px;
 }
 
+/* ------- Button ---------- */
+.btn__InicioSeccion {
+    margin: auto auto;
+    width: 210px;
+    height: 65px;
+    background: #F5F5FA;
+    border-radius: 15px;
+    color: #000000;
+    font-size: 1.3em;
+    border: none;
+    position: relative;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.btn__InicioSeccion:hover{
+    scale: 1.02;
+}
+
 /* ------ CARD STYLES ------ */
 
 .card {
