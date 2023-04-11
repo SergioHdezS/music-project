@@ -7,9 +7,9 @@
     <title>Music Project</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="onPageLoad()">
     <header>
-        <button>Inicio de Sesion</button>
+        <button class="btn__InicioSeccion" onclick="requestAuthorization()" value="Request Authorization">Iniciar sesión </button>
         <h1>Music Project</h1>
     </header>
     <main>
@@ -53,5 +53,6 @@
             </div>
         </section>
     </main>
+    <script src='/app.js' type='text/javascript'></script>
 </body>
 </html>

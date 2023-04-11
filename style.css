@@ -65,3 +65,49 @@ section {
     font-size: 20px;
     height: 5px;
 }
+
+/* ------- Button ---------- */
+.btn__InicioSeccion {
+    margin: auto auto;
+    width: 210px;
+    height: 65px;
+    background: #F5F5FA;
+    border-radius: 15px;
+    color: #000000;
+    font-size: 1.3em;
+    border: none;
+    box-shadow: 0px 0px 20px 30px rgba(8, 255, 74, 1);
+    animation: CambioBoxshadow 2s infinite;
+    position: relative;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.btn__InicioSeccion:hover{
+    scale: 1.02;
+}
+
+@keyframes CambioBoxshadow {
+    0%{
+        box-shadow: 0px 0px 15px 1px rgba(8, 255, 74, 1);
+    }
+
+    50%{
+        box-shadow: 0px 0px 35px 1px rgba(8, 255, 74, 1);
+    }
+
+    100%{
+        box-shadow: 0px 0px 15px 1px rgba(8, 255, 74, 1);
+    }
+}
+
+
+.test {
+    background-color: white;
+    margin: 50px;
+    height: 500px;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
