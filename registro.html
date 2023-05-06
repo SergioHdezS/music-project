@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Registro</title>
+    <link rel="stylesheet" href="styles-registro.css">
+</head>
+<body>
+    <header>
+        <div class="titulo-pagina">
+            <h1>Spotify Clone</h1>
+            <h3>Descubre lo nuevo en la musica</h3>
+        </div>
+    </header>
+    <main>
+        <form method="post" action="registro.html" class="formulario-registro">
+            <label for="nombre">Nombre: </label>
+            <input type="text" id="nombre" onchange="validarNombre()" required>
+            <span id="nombreError"></span>
+            <label for="apellido">Apellido: </label>
+            <input type="text" id="apellido" onchange="validarApellido()" required>
+            <span id="apellidoError"></span>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" onchange="validarEmail()" required>
+            <span id="emailError"></span>
+            <label for="contrasena">Contraseña</label>
+            <input type="password" name="contrasena" id="password" onchange="validarContrasena()" required>
+            <span id="contrasenaError"></span>
+            <label for="ciudad">Ciudad: </label>
+            <input type="text" id="ciudad" onchange="validarCiudad()" required>
+            <span id="ciudadError"></span>
+            <button type="submit">Registrarse</button>
+        </form>
+    </main>
+    <script>
+        function validarNombre() {
+            var nombre = document.getElementById("nombre");
+            // Validar que el nombre no esté vacío
+            if (nombre.value === "") {
+                document.getElementById("nombreError").innerText = "Ingresa un nombre.";
+                nombre.style.border = "4px solid red"
+                return false
+            } else {
+                document.getElementById("nombreError").innerText = "";
+                nombre.style.border = "4px solid green"
+            }
+        }
+        function validarApellido() {
+            var apellido = document.getElementById("apellido");
+            // Validar que el nombre no esté vacío
+            if (apellido.value === "") {
+                document.getElementById("apellidoError").innerText = "Ingresa un apellido.";
+                apellido.style.border = "4px solid red"
+                return false
+            } else {
+                document.getElementById("apellidoError").innerText = "";
+                apellido.style.border = "4px solid green"
+            }
+        }
+        function validarEmail() {
+            var email = document.getElementById("email");
+            // Validar que el correo electrónico tenga un formato válido
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.match(emailRegex)) {
+                document.getElementById("emailError").innerText = "Ingresa un correo electrónico válido.";
+                email.style.border = "4px solid red"
+                return false
+            } else {
+                document.getElementById("emailError").innerText = "";
+                email.style.border = "4px solid green"
+            }
+        }
+        function validarContrasena(contrasena) {
+            var contrasenaValor = document.getElementById("password").value;
+            var contrasena = document.getElementById("contrasena");
+            if (contrasenaValor.length < 6) {
+                document.getElementById("contrasenaError").innerText = "Ingresa al menos 6 caracteres";
+                contrasena.style.border = "4px solid red"
+                return false
+            } else {
+                document.getElementById("contrasenaError").innerText = "";
+                contrasena.style.border = "2px solid green"
+            }
+        }
+        function validarCiudad() {
+            var ciudad = document.getElementById("ciudad");
+            if (ciudad.value === "") {
+                document.getElementById("ciudadError").innerText = "Ingresa una ciudad";
+                ciudad.style.border = "2px solid red"
+                return false
+            } else {
+                document.getElementById("ciudadError").innerText = "";
+                ciudad.style.border = "2px solid green"
+            }
+        }
+        const formulario = document.querySelector("form");
+        formulario.addEventListener("submit", async (eventoSubmit) => {
+            eventoSubmit.preventDefault();
+            const formElement = eventoSubmit.currentTarget;
+            const formData = new FormData(formElement);
+            const email = formData.get("email");
+            const contrasena = formData.get("contrasena");
+            const nuevoUsuario = {
+                email,
+                contrasena
+            };
+            console.log(nuevoUsuario);
+
+            const baseUrl = "http://localhost:3000";
+            const url = baseUrl + "/registro";
+            const fetchConfig = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(nuevoUsuario)
+            };
+            try {
+                const respuesta = await fetch(url, fetchConfig);
+                if (!respuesta.ok) {
+                    console.error("La respuesta no está OK");
+                    return;
+                }
+                const objetoJson = await respuesta.json();
+                console.dir(objetoJson);
+
+            } catch (error) {
+                // gestion errores 
+                console.error(error.code);
+                console.error(error.message);
+            }
+        });
+    </script>
+</body>
+
+</html>
