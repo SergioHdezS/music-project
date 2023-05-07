@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingreso</title>
     <link rel="stylesheet" href="styles-login.css">
+    <script src="js/config.js"></script>
+    <script src="js/login.js"></script>
+
 </head>
 
 <body>
@@ -27,57 +30,5 @@
             <button type="submit">Ingresar</button>
         </form>
     </main>
-
-    <script>
-        const formulario = document.querySelector("form");
-        formulario.addEventListener("submit", async (eventoSubmit) => {
-            eventoSubmit.preventDefault();
-            const formElement = eventoSubmit.currentTarget;
-            const formData = new FormData(formElement);
-            const email = formData.get("email");
-            const contrasena = formData.get("password");
-            const nuevoUsuario = {
-                email,
-                contrasena
-            };
-
-            const baseUrl = "http://localhost:3000";
-            const url = baseUrl + "/login";
-            const fetchConfig = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(nuevoUsuario)
-            };
-
-            try {
-                const respuesta = await fetch(url, fetchConfig);
-                // si la respuesta no es OK 
-                if (!respuesta.ok) {
-                    // gestionar error o mensajes recibidos 
-                    console.error("La respuesta no está OK");
-                    return;
-                }
-
-                // en caso de exito 
-                const objetoJson = await respuesta.json();
-                console.dir(objetoJson);
-
-                const usuario = objetoJson.usuario;
-                // caso éxito 
-
-                // guardo datos del usuario y TOKEN 
-                localStorage.setItem('usuario', JSON.stringify(usuario));
-                // redirijo a página protegida 
-                window.location = 'dashboard.html';
-
-            } catch (error) {
-                // gestion errores 
-                console.error(error.code);
-                console.error(error.message);
-            }
-        });
-    </script>
 </body>
 </html>
